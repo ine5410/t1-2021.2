@@ -34,7 +34,7 @@
     /**
      * @brief Obtém o AGV posicionado para receber lâmpadas
      * 
-     * @param agvs A lista de AGVs da fábrica.
+     * @param controle Controle dos AGVs da fábrica.
      * @param reciclagem Indica se o AGV desejado é o com lâmpadas para reciclagem.
      * @return Um ponteiro para um AGV.
      */
@@ -43,7 +43,7 @@
     /**
      * @brief Finaliza todos os AGVs da fábrica.
      * 
-     * @param agvs A lista de AGVs da fábrica
+     * @param controle Controle dos AGVs da fábrica.
      */
     extern void controle_finaliza_agvs(controle_agvs_t *controle);
 
