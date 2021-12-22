@@ -17,15 +17,16 @@ config_t parse (int argc, char **argv)
 
     /* Configuração padrão. */
     config_t config = { 
-        100, /* Quantidade de lâmpadas.         */
-        1,   /* Velocidade da esteira.          */
-        16,  /* Capacidade do buffer.           */
-        4,   /* Capacidade da bancada de teste. */
-        12,  /* Capacidade de cada AGV.      */
-        2    /* Quantidade de AGVs.             */
+        100,  /* Quantidade de lâmpadas.                               */
+        1,    /* Velocidade da esteira.                                */
+        16,   /* Capacidade do buffer.                                 */
+        4,    /* Capacidade da bancada de teste.                       */
+        2000, /* Tempo máximo necessário para testar uma lâmpada (ms). */
+        12,   /* Capacidade de cada AGV.                               */
+        2     /* Quantidade de AGVs.                                   */
     };
 
-    while ((c = getopt(argc, argv, "l:v:b:t:a:c:h")) != -1) {
+    while ((c = getopt(argc, argv, "l:v:b:t:d:a:c:h")) != -1) {
         switch (c) {
             case 'l':
                 if (atoi(optarg) < 0) {
@@ -55,6 +56,13 @@ config_t parse (int argc, char **argv)
                 }
                 config.capacidade_bancada = atoi(optarg);
                 break;
+            case 'd':
+                if (atoi(optarg) < 0) {
+                    printf("Erro: o tempo máximo de teste de uma lâmpada precisa ser maior que zero.");
+                    exit(0);
+                }
+                config.tempo_max_teste = atoi(optarg);
+                break;
             case 'a':
                 if (atoi(optarg) < 2) {
                     printf("Erro: a quantidade de AGVs precisa ser maior que dois.");
@@ -75,6 +83,7 @@ config_t parse (int argc, char **argv)
                 printf("  -v  Velocidade da esteira (padrão: 1).\n");
                 printf("  -b  Capacidade do buffer (padrão: 16).\n");
                 printf("  -t  Capacidade da bancada de teste (padrão: 4).\n");
+                printf("  -d  Tempo máximo de teste de uma lâmpada (padrão: 2000 ms).\n");
                 printf("  -a  Quantidade de AGVs (padrão: 2).\n");
                 printf("  -c  Capacidade de cada AGV (padrão: 12).\n");
                 printf("  -h  Imprime esta ajuda.\n");
@@ -109,6 +118,7 @@ int main (int argc, char **argv)
     printf("Velocidade da esteira         : %u\n", config.velocidade_esteira);
     printf("Capacidade do buffer          : %u\n", config.capacidade_buffer);
     printf("Capacidade da bancada de teste: %u\n", config.capacidade_bancada);
+    printf("Tempo máx. teste da lâmpada   : %u (ms)\n", config.tempo_max_teste);
     printf("Capacidade de cada AGV        : %u\n", config.capacidade_agv);
     printf("Número de AGVs                : %u\n", config.quantidade_agvs);
     printf(BAR);

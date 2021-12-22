@@ -56,6 +56,7 @@
      * @brief Remove uma lâmpada da esteira.
      * 
      * @param self A esteira.
+     * @return Um ponteiro para a lâmpada removida.
      */
     extern lampada_t * esteira_remove(esteira_t *self);
 

@@ -1,10 +1,6 @@
 #include <stdlib.h>
 #include "buffer.h"
 
-/* --------------------------------------------------------- */
-/* ATENÇÃO: Não será necessário modificar as funções abaixo!  */
-/* --------------------------------------------------------- */
-
 void buffer_inicializa(buffer_t *self)
 {
     /* TODO: Adicionar código nesta função se necessário! */
@@ -24,7 +20,7 @@ lampada_t * buffer_remove(buffer_t *self)
 {
     /* TODO: Adicionar código nesta função se necessário! */
     
-    /* !!! CÓDIGO TEMPORÁRIO !!! */
+    /* !!! CÓDIGO TEMPORÁRIO: VOCÊ DEVERÁ ALTERAR !!! */
     lampada_t *lampada = self->slots[0];
     /* ------------------------- */
 

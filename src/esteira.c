@@ -6,10 +6,12 @@
 #include "config.h"
 #include "esteira.h"
 
+/* --------------------------------------------------------- */
+/* ATENÇÃO: Não será necessário modificar as funções abaixo!  */
+/* --------------------------------------------------------- */
+
 void esteira_inicializa(esteira_t *self)
 {
-    /* TODO: Adicionar código nesta função se necessário! */
-
     self->tipo = ESTEIRA;
     self->lampadas_produzidas = 0;
     self->lampadas_consumidas = 0;
@@ -24,9 +26,7 @@ void esteira_inicializa(esteira_t *self)
 }
 
 void esteira_insere(esteira_t *self) 
-{
-    /* TODO: Adicionar código nesta função se necessário! */
-    
+{   
     lampada_inicializa(&(self->lampadas[self->lampadas_produzidas]), self->lampadas_produzidas, rand() % 2, rand() % 2, rand() % 2, rand() % 2);
     plog("[esteira] Lâmpada %u INSERIDA na esteira (bulbo = %u, luz = %u, rosca = %u, marca = %u)\n", self->lampadas_produzidas, self->lampadas[self->lampadas_produzidas].bulbo, 
         self->lampadas[self->lampadas_produzidas].luz, self->lampadas[self->lampadas_produzidas].rosca, self->lampadas[self->lampadas_produzidas].marca);
@@ -40,16 +40,10 @@ lampada_t * esteira_remove(esteira_t *self)
 
 void esteira_finaliza(esteira_t *self)
 {
-    /* TODO: Adicionar código nesta função se necessário! */
-    
     pthread_join(self->thread, NULL);
     free(self->lampadas);
     plog("[esteira] Finalizada\n");
 }
-
-/* --------------------------------------------------------- */
-/* ATENÇÃO: Não será necessário modificar as funções abaixo!  */
-/* --------------------------------------------------------- */
 
 void * esteira_executa(void *arg)
 {

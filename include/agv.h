@@ -14,12 +14,12 @@
      * @brief Define os atributos do AGV.
      */
     typedef struct agv {
-        unsigned int id;    /* Identificador único do AGV. */
-        void *carga;        /* Conteúdo do compartimento de carga do AGV */
-        int cont_lampadas;  /* Quantidade de lâmpadas no compartimento de carga do AGV */
-        bool posicionado;   /* Indica se o AGV está ao posicionado ao lado do robô para ser carregado com lâmpadas. */
-        bool reciclar;      /* Indica se este AVG está com uma carga de lâmpadas que serão recicladas. */
-        pthread_t thread;   /* A thread do AGV. */
+        unsigned int id;             /* Identificador único do AGV. */
+        void *carga;                 /* Conteúdo do compartimento de carga do AGV. */
+        unsigned int cont_lampadas;  /* Quantidade de lâmpadas no compartimento de carga do AGV. */
+        bool posicionado;            /* Indica se o AGV está ao posicionado ao lado do robô para ser carregado com lâmpadas. */
+        bool reciclar;               /* Indica se este AVG está com uma carga de lâmpadas que serão recicladas. */
+        pthread_t thread;            /* A thread do AGV. */
 
         /* TODO: Adicione aqui os atributos que achar necessários para implementar o
          comportamento do AGV. Esses atributos deverão ser usados pelas funções do AGV. */

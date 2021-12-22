@@ -15,6 +15,7 @@
     typedef struct {
         unsigned int quantidade_agvs;  /* Quantidade de AGVs controlados. */
         agv_t *agvs;                   /* Array com todos os AGVs da fábrica. */
+       
         /* TODO: Adicione aqui os atributos que achar necessários. */
     } controle_agvs_t;
 

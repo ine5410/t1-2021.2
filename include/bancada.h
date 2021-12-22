@@ -1,6 +1,7 @@
 #ifndef __BANCADA_H__
 #define __BANCADA_H__
 
+    #include <stdbool.h>
     #include "config.h"
     #include "lampada.h"
 
@@ -12,8 +13,11 @@
      * @brief Define os atributos da bancada de teste.
      */
     typedef struct {   
-        unsigned int quantidade; /* Quantidade atual de lâmpadas na bancada de teste. */
-        lampada_t *slots;        /* Array que armanazena as lâmpadas na bancada de teste. */
+        unsigned int slots_ocupados;   /* Quantidade atual de lâmpadas na bancada de teste. */
+        unsigned int total_testadas;   /* Número total de lâmpadas testadas. */
+        unsigned int total_aprovadas;  /* Número total de lâmpadas aprovadas no teste. */
+        unsigned int total_reprovadas; /* Número total de lâmpadas reprovadas no teste. */
+        lampada_t *slots;              /* Array que armanazena as lâmpadas na bancada de teste. */
     } bancada_t;
 
     /*============================================================================*
@@ -35,6 +39,15 @@
      */
     extern void bancada_insere(bancada_t *self, lampada_t *lampada);
 
+    /**
+     * @brief Testa a lâmpada, verificando se há algum defeito.
+     * 
+     * @param self A bancada.
+     * @param lampada A lâmpada a ser testada.
+     * @return Retorna TRUE se a lâmpada foi aprovada no teste. Caso contrário, retorna FALSE.
+     */
+    extern bool bancada_testa(bancada_t *self, lampada_t *lampada);
+    
     /**
      * @brief Remove uma lâmpada da bancada de teste.
      * 

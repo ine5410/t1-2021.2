@@ -4,6 +4,10 @@
 
 config_t config;
 
+/* --------------------------------------------------------- */
+/* ATENÇÃO: Não será necessário modificar as funções abaixo!  */
+/* --------------------------------------------------------- */
+
 /* msleep(): Sleep for the requested number of milliseconds. */
 int msleep(long msec)
 {

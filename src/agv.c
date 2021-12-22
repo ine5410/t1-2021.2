@@ -7,6 +7,7 @@
 void agv_inicializa(agv_t *self, unsigned int id)
 {
     /* TODO: Adicionar código nesta função se necessário! */
+    
     self->id = id;
     self->cont_lampadas = 0;
     if (pthread_create(&self->thread, NULL, agv_executa, (void *) self) == 0) {
@@ -47,12 +48,14 @@ void agv_posiciona(agv_t *self, bool reciclar)
 void agv_insere(agv_t *self, lampada_t *lampada)
 {
     /* TODO: Inserir uma lâmpada no compartimento de carga do AGV. */
+    
     plog("[AGV %u] Lâmpada inserida no compartimento de carga.\n", self->id);
 }
 
 void agv_transporta(agv_t *self)
 {
-    /* TODO: Transportar a carga de lâmpadas para o depósito */
+    /* TODO: Transportar a carga de lâmpadas para o depósito. */
+    
     self->posicionado = false;
     self->cont_lampadas = 0;
     plog("[AGV %u] Lâmpadas transportadas para o depósito.\n", self->id);
@@ -61,10 +64,7 @@ void agv_transporta(agv_t *self)
 void agv_finaliza(agv_t *self)
 {
     /* TODO: Adicionar código aqui se necessário! */
+    
     pthread_join(self->thread, NULL);
     plog("[AGV %u] Finalizado\n", self->id);
 }
-
-/* --------------------------------------------------------- */
-/* ATENÇÃO: Não será necessário modificar as funções abaixo! */
-/* --------------------------------------------------------- */

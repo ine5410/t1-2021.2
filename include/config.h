@@ -20,6 +20,7 @@ typedef struct config {
     unsigned int velocidade_esteira;  /* Velocidade da esteira (de ESTEIRA_VEL_MIN a ESTEIRA_VEL_MAX). */
     unsigned int capacidade_buffer;   /* Capacidade do buffer (> 0).                                   */
     unsigned int capacidade_bancada;  /* Capacidade da bancada de teste (> 0).                         */
+    unsigned int tempo_max_teste;     /* Tempo máximo necessário para testar uma lâmpada (> 0).        */
     unsigned int capacidade_agv;      /* Capacidade de cada AGV (> 0).                                 */
     unsigned int quantidade_agvs;     /* Número de AGVs (> 2).                                         */
 } config_t;

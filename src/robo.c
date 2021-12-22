@@ -66,6 +66,7 @@ void robo_coloca_lampada(robo_t *self, lampada_t *lampada)
 {
     controle_agvs_t * controle = NULL;
     agv_t *agv = NULL;
+    
     /* TODO: Adicionar código nesta função se necessário! */
 
     switch(self->tipo_equipamento_direita) {
@@ -104,7 +105,3 @@ void robo_finaliza(robo_t *self)
     pthread_join(self->thread, NULL);
     plog("[robô %u] Finalizado\n", self->id);
 }
-
-/* --------------------------------------------------------- */
-/* ATENÇÃO: Não será necessário modificar as funções abaixo!  */
-/* --------------------------------------------------------- */
