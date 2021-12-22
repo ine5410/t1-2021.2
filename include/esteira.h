@@ -2,6 +2,7 @@
 #define __ESTEIRA_H__
 
     #include <pthread.h>
+    #include <math.h>
     #include "lampada.h"
 
     /*============================================================================*
@@ -10,7 +11,7 @@
 
     #define ESTEIRA_VEL_MIN   1   /* Velocidade mínima da esteira.          */
     #define ESTEIRA_VEL_MAX   10  /* Velocidade máxima da esteira.          */
-    #define ESTEIRA_VEL_TEMPO 10  /* Conversor de velocidade em tempo (ms). */
+    #define ESTEIRA_VEL_TEMPO 1   /* Conversor de velocidade em tempo.      */
 
     /**
      * @brief Define os atributos da esteira.

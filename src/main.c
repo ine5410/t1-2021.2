@@ -37,42 +37,42 @@ config_t parse (int argc, char **argv)
                 break;
             case 'v':
                 if (atoi(optarg) < ESTEIRA_VEL_MIN || atoi(optarg) > ESTEIRA_VEL_MAX) {
-                    printf("Erro: a velocidade da esteira precisa ser entre %d e %d.", ESTEIRA_VEL_MIN, ESTEIRA_VEL_MAX);
+                    printf("Erro: a velocidade da esteira precisa ser entre %d e %d.\n", ESTEIRA_VEL_MIN, ESTEIRA_VEL_MAX);
                     exit(0);
                 }
                 config.velocidade_esteira = atoi(optarg);
                 break;
             case 'b':
                 if (atoi(optarg) < 0) {
-                    printf("Erro: a capacidade do buffer precisa ser maior que zero.");
+                    printf("Erro: a capacidade do buffer precisa ser maior que zero.\n");
                     exit(0);
                 }
                 config.capacidade_buffer = atoi(optarg);
                 break;
             case 't':
                 if (atoi(optarg) < 0) {
-                    printf("Erro: a capacidade da bancada precisa ser maior que zero.");
+                    printf("Erro: a capacidade da bancada precisa ser maior que zero.\n");
                     exit(0);
                 }
                 config.capacidade_bancada = atoi(optarg);
                 break;
             case 'd':
                 if (atoi(optarg) < 0) {
-                    printf("Erro: o tempo máximo de teste de uma lâmpada precisa ser maior que zero.");
+                    printf("Erro: o tempo máximo de teste de uma lâmpada precisa ser maior que zero.\n");
                     exit(0);
                 }
                 config.tempo_max_teste = atoi(optarg);
                 break;
             case 'a':
                 if (atoi(optarg) < 2) {
-                    printf("Erro: a quantidade de AGVs precisa ser maior que dois.");
+                    printf("Erro: a quantidade de AGVs precisa ser maior que dois.\n");
                     exit(0);
                 }
                 config.quantidade_agvs = atoi(optarg);
                 break;
             case 'c':
                 if (atoi(optarg) < 0) {
-                    printf("Erro: a capacidade de cada AGV precisa ser maior que zero.");
+                    printf("Erro: a capacidade de cada AGV precisa ser maior que zero.\n");
                     exit(0);
                 }
                 config.capacidade_agv = atoi(optarg);
