@@ -17,10 +17,7 @@ void esteira_inicializa(esteira_t *self)
     self->lampadas_consumidas = 0;
     self->lampadas = (lampada_t *) malloc(sizeof(lampada_t) * config.quantidade_lampadas);
 
-    if (pthread_create(&self->thread, NULL, esteira_executa, (void *) self) == 0) {
-        plog("[esteira] Inicializada\n");
-    }
-    else {
+    if (pthread_create(&self->thread, NULL, esteira_executa, (void *) self) != 0) {
         plog("[esteira] Erro ao inicializar esteira\n");
     }
 }
@@ -52,6 +49,8 @@ void esteira_finaliza(esteira_t *self)
 
 void * esteira_executa(void *arg)
 {
+    plog("[esteira] Inicializada\n");
+
     /* Recupera o argumento de entrada (esteira_t). */
     esteira_t *esteira = (esteira_t *) arg;
 

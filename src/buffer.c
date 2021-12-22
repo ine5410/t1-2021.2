@@ -5,26 +5,25 @@ void buffer_inicializa(buffer_t *self)
 {
     /* TODO: Adicionar código nesta função se necessário! */
     
-    self->quantidade = 0;
+    self->slots_ocupados = 0;
     self->slots = (lampada_t **) malloc(sizeof(lampada_t *) * config.capacidade_buffer);
+    plog("[buffer] Inicializado\n");
 }
 
 void buffer_insere(buffer_t *self, lampada_t *lampada) 
 {
     /* TODO: Adicionar código nesta função se necessário! */
-    
-    plog("[buffer] Lâmpada %u INSERIDA no BUFFER (slots ocupados = %u)\n", lampada->id, ++self->quantidade);
+
+    /* Incrementa a quantidade de slots ocupados no buffer. */
+    self->slots_ocupados++;
 }
 
 lampada_t * buffer_remove(buffer_t *self)
 {
     /* TODO: Adicionar código nesta função se necessário! */
     
-    /* !!! CÓDIGO TEMPORÁRIO: VOCÊ DEVERÁ ALTERAR !!! */
-    lampada_t *lampada = self->slots[0];
-    /* ------------------------- */
-
-    plog("[buffer] Lâmpada %u REMOVIDA do BUFFER (slots ocupados = %u)\n", lampada->id, --self->quantidade);
+    /* Decrementa a quantidade de slots ocupados no buffer. */
+    self->slots_ocupados--;
 
     return(NULL);
 }
@@ -34,4 +33,5 @@ void buffer_finaliza(buffer_t *self)
     /* TODO: Adicionar código nesta função se necessário! */
 
     free(self->slots);
+    plog("[buffer] Finalizado\n");
 }

@@ -114,6 +114,8 @@ int main (int argc, char **argv)
     
     /* Imprime as informações da execução. */
     printf(BAR);
+    printf("PARÂMETROS DA SIMULAÇÃO\n");
+    printf(BAR);
     printf("Total de lâmpadas             : %u\n", config.quantidade_lampadas);
     printf("Velocidade da esteira         : %u\n", config.velocidade_esteira);
     printf("Capacidade do buffer          : %u\n", config.capacidade_buffer);
@@ -122,12 +124,14 @@ int main (int argc, char **argv)
     printf("Capacidade de cada AGV        : %u\n", config.capacidade_agv);
     printf("Número de AGVs                : %u\n", config.quantidade_agvs);
     printf(BAR);
-    printf("\n");
+    printf("\n\n");
+
+    printf("Executando a simulação...\n\n");
 
     /* Inicializa o gerador de números aleatórios. */
     srand(time(NULL));
     
-    /* Inicializa os recursos. */
+    /* Inicializa a esteira. */
     esteira_inicializa(&esteira);
 
     /* Inicializa o buffer. */    
@@ -140,19 +144,28 @@ int main (int argc, char **argv)
     controle_inicializa_agvs(&controle_agvs, config.quantidade_agvs);
 
     /* Inicializa os robôs. */
-    robo_inicializa(&robos[0], 1, (void *) &esteira, ESTEIRA, (void *) &buffer, BUFFER);
-    robo_inicializa(&robos[1], 2, (void *) &buffer, BUFFER, (void *) &bancada, BANCADA);
-    robo_inicializa(&robos[2], 3, (void *) &bancada, BANCADA, (void *) &controle_agvs, AGVS);
+    robo_inicializa(&robos[0], 0, (void *) &esteira, ESTEIRA, (void *) &buffer, BUFFER);
+    robo_inicializa(&robos[1], 1, (void *) &buffer, BUFFER, (void *) &bancada, BANCADA);
+    robo_inicializa(&robos[2], 2, (void *) &bancada, BANCADA, (void *) &controle_agvs, AGVS);
 
-    /* Finaliza tudo. */
+    /* Finaliza a esteira. */
     esteira_finaliza(&esteira);
+    
+    /* Finaliza o buffer. */
     buffer_finaliza(&buffer);
+    
+    /* Finaliza a bancada. */
     bancada_finaliza(&bancada);
+    
+    /* Finaliza os AGVs. */
+    controle_finaliza_agvs(&controle_agvs);
 
+    /* Finaliza os robôs. */
     for (int i = 0; i < 3; i++)
         robo_finaliza(&robos[i]);
 
-    controle_finaliza_agvs(&controle_agvs);
+    /* Imprime as estatísticas da simulação. */
+    bancada_imprime_resultados(&bancada);
 
     return 0;
 }

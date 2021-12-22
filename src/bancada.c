@@ -10,13 +10,16 @@ void bancada_inicializa(bancada_t *self)
     self->total_aprovadas = 0;
     self->total_reprovadas = 0;
     self->slots = (lampada_t *) malloc(sizeof(lampada_t) * config.capacidade_bancada);
+
+    plog("[bancada] Inicializada\n");
 }
 
 void bancada_insere(bancada_t *self, lampada_t *lampada) 
 {
     /* TODO: Adicionar código nesta função se necessário! */
 
-    plog("[bancada] Lâmpada %u INSERIDA na BANCADA DE TESTE (slots ocupados = %u)\n", lampada->id, ++self->slots_ocupados);
+    /* Incrementa a quantidade de slots ocupados na bancada. */
+    self->slots_ocupados++;
 }
 
 bool bancada_testa(bancada_t *self, lampada_t *lampada)
@@ -46,11 +49,8 @@ lampada_t * bancada_remove(bancada_t *self)
 {
     /* TODO: Adicionar código nesta função se necessário! */
 
-    /* !!! CÓDIGO TEMPORÁRIO: VOCÊ DEVERÁ ALTERAR !!! */
-    lampada_t *lampada = &self->slots[0];
-    /* ------------------------- */
-
-    plog("[bancada] Lâmpada %u REMOVIDA na BANCADA DE TESTE (slots ocupados = %u)\n", lampada->id, --self->slots_ocupados);
+    /* Decrementa a quantidade de slots ocupados na bancada. */
+    self->slots_ocupados--;
 
     return(NULL);
 }
@@ -59,7 +59,17 @@ void bancada_finaliza(bancada_t *self)
 {
     /* TODO: Adicionar código nesta função se necessário! */
 
-    printf("Estatísticas de lâmpadas: testadas = %u, aprovadas = %u, reprovadas = %d\n", self->total_testadas, self->total_aprovadas, self->total_reprovadas);
-
     free(self->slots);
+    plog("[bancada] Finalizada\n");
+}
+
+void bancada_imprime_resultados(bancada_t *self) 
+{
+    printf("\n");
+    printf(BAR);
+    printf("RESULTADOS DA SIMULAÇÃO\n");
+    printf(BAR);
+    printf("Lâmpadas testadas  : %u\nLâmpadas aprovadas : %u\nLâmpadas reprovadas: %d\n", self->total_testadas, self->total_aprovadas, self->total_reprovadas);
+    printf(BAR);
+    printf("\n");
 }

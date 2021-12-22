@@ -12,8 +12,8 @@
      * @brief Define os atributos do buffer.
      */
     typedef struct {   
-        unsigned int quantidade; /* Quantidade atual de lâmpadas no buffer. */
-        lampada_t **slots;       /* Array que armanazena referências para lâmpadas no buffer. */
+        unsigned int slots_ocupados; /* Quantidade atual de lâmpadas no buffer. */
+        lampada_t **slots;           /* Array que armanazena referências para lâmpadas no buffer. */
     
         /* TODO: Adicione aqui os atributos que achar necessários. Esses atributos
         deverão ser usados pelas funções do buffer. */

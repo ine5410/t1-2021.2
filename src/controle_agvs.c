@@ -12,6 +12,8 @@ void controle_inicializa_agvs(controle_agvs_t * controle, unsigned int quantidad
     controle->agvs = (agv_t *) malloc(sizeof(agv_t) * quantidade_agvs);
     for (int i = 0; i < quantidade_agvs; i++)
         agv_inicializa(&controle->agvs[i], i);
+
+    plog("[controle AGVs] Inicializado\n");
 }
 
 agv_t * controle_retorna_agv(controle_agvs_t * controle, bool reciclagem)
@@ -27,5 +29,7 @@ void controle_finaliza_agvs(controle_agvs_t * controle)
 
     for (int i = 0; i < controle->quantidade_agvs; i++)
         agv_finaliza(&controle->agvs[i]);
-    free(controle->agvs);    
+    free(controle->agvs);
+
+    plog("[controle AGVs] Finalizado\n");
 }

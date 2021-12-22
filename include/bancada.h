@@ -64,4 +64,11 @@
      */
     extern void bancada_finaliza(bancada_t *self);
 
+    /**
+     * @brief Imprime estatíscas da bancada.
+     * 
+     * @param self A bancada.
+     */
+    extern void bancada_imprime_resultados(bancada_t *self);
+
 #endif /*__BANCADA_H__*/
