@@ -21,6 +21,8 @@ void bancada_insere(bancada_t *self, lampada_t *lampada)
 
 bool bancada_testa(bancada_t *self, lampada_t *lampada)
 {
+    /* TODO: Adicionar código nesta função se necessário! */
+    
     /* Simula um tempo aleatório de teste da lâmpada. NÃO REMOVER! */
     msleep(rand() % config.tempo_max_teste);
 
