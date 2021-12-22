@@ -46,4 +46,12 @@
      */
     extern void lampada_inicializa(lampada_t *self, unsigned int id, estado_parametro_t bulbo, estado_parametro_t luz, estado_parametro_t rosca, estado_parametro_t marca);
 
+    /**
+     * @brief Converte um estado_parametro_t em string.
+     * 
+     * @param param Uma variável do tipo estado_parametro_t.
+     * @return Retorna a string "OK" se param == OK. Caso contrário, retorna a string "FALHA".
+     */
+    extern char * lampada_param_status(estado_parametro_t param);
+
 #endif /*__LAMPADA_H__*/

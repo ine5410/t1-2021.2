@@ -13,3 +13,11 @@ void lampada_inicializa(lampada_t *self, unsigned int id, estado_parametro_t bul
     self->marca = marca;
     self->resultado_teste = DESCONHECIDO;
 }
+
+char * lampada_param_status(estado_parametro_t param) 
+{
+    if (param == OK)
+        return "OK   ";
+    
+    return "FALHA";
+}

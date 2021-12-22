@@ -27,9 +27,14 @@ void esteira_inicializa(esteira_t *self)
 
 void esteira_insere(esteira_t *self) 
 {   
-    lampada_inicializa(&(self->lampadas[self->lampadas_produzidas]), self->lampadas_produzidas, rand() % 2, rand() % 2, rand() % 2, rand() % 2);
-    plog("[esteira] Lâmpada %u INSERIDA na esteira (bulbo = %u, luz = %u, rosca = %u, marca = %u)\n", self->lampadas_produzidas, self->lampadas[self->lampadas_produzidas].bulbo, 
-        self->lampadas[self->lampadas_produzidas].luz, self->lampadas[self->lampadas_produzidas].rosca, self->lampadas[self->lampadas_produzidas].marca);
+    if (rand() % 2 == 0)
+        lampada_inicializa(&(self->lampadas[self->lampadas_produzidas]), self->lampadas_produzidas, OK, OK, OK, OK);
+    else
+        lampada_inicializa(&(self->lampadas[self->lampadas_produzidas]), self->lampadas_produzidas, rand() % 2, rand() % 2, rand() % 2, rand() % 2);
+    
+    plog("[esteira] Lâmpada %u INSERIDA na esteira (bulbo: %s, luz: %s, rosca: %s, marca: %s)\n", self->lampadas_produzidas, lampada_param_status(self->lampadas[self->lampadas_produzidas].bulbo), 
+        lampada_param_status(self->lampadas[self->lampadas_produzidas].luz), lampada_param_status(self->lampadas[self->lampadas_produzidas].rosca), lampada_param_status(self->lampadas[self->lampadas_produzidas].marca));
+    
     self->lampadas_produzidas++;
 }
 

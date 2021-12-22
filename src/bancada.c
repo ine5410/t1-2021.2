@@ -22,7 +22,7 @@ void bancada_insere(bancada_t *self, lampada_t *lampada)
 bool bancada_testa(bancada_t *self, lampada_t *lampada)
 {
     /* TODO: Adicionar código nesta função se necessário! */
-    
+
     /* Simula um tempo aleatório de teste da lâmpada. NÃO REMOVER! */
     msleep(rand() % config.tempo_max_teste);
 
@@ -59,7 +59,7 @@ void bancada_finaliza(bancada_t *self)
 {
     /* TODO: Adicionar código nesta função se necessário! */
 
-    printf("[bancada] Estatísticas de lâmpadas: testadas = %u, aprovadas = %u, reprovadas = %d\n", self->total_testadas, self->total_aprovadas, self->total_reprovadas);
+    printf("Estatísticas de lâmpadas: testadas = %u, aprovadas = %u, reprovadas = %d\n", self->total_testadas, self->total_aprovadas, self->total_reprovadas);
 
     free(self->slots);
 }
