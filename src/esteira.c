@@ -6,6 +6,8 @@
 #include "config.h"
 #include "esteira.h"
 
+void esteira_insere(esteira_t *self);
+
 void * esteira_executa(void *arg)
 {
     plog("[esteira] Inicializada\n");
