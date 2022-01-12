@@ -6,6 +6,24 @@
 #include "config.h"
 #include "esteira.h"
 
+void * esteira_executa(void *arg)
+{
+    plog("[esteira] Inicializada\n");
+
+    /* Recupera o argumento de entrada (esteira_t). */
+    esteira_t *esteira = (esteira_t *) arg;
+
+    double fator = (double) (ESTEIRA_VEL_MAX + 1 - config.velocidade_esteira);
+    
+    /* Produz config.total_lampadas lâmpadas. */
+    for (int i = 0; i < config.quantidade_lampadas; i++) {
+        esteira_insere(esteira);
+        msleep((long) ESTEIRA_VEL_TEMPO * pow(2.0, fator));
+    }
+
+    pthread_exit(NULL);
+}
+
 /* --------------------------------------------------------- */
 /* ATENÇÃO: Não será necessário modificar as funções abaixo!  */
 /* --------------------------------------------------------- */
@@ -47,20 +65,3 @@ void esteira_finaliza(esteira_t *self)
     plog("[esteira] Finalizada\n");
 }
 
-void * esteira_executa(void *arg)
-{
-    plog("[esteira] Inicializada\n");
-
-    /* Recupera o argumento de entrada (esteira_t). */
-    esteira_t *esteira = (esteira_t *) arg;
-
-    double fator = (double) (ESTEIRA_VEL_MAX + 1 - config.velocidade_esteira);
-    
-    /* Produz config.total_lampadas lâmpadas. */
-    for (int i = 0; i < config.quantidade_lampadas; i++) {
-        esteira_insere(esteira);
-        msleep((long) ESTEIRA_VEL_TEMPO * pow(2.0, fator));
-    }
-
-    pthread_exit(NULL);
-}
