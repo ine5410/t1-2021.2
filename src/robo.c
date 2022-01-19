@@ -15,7 +15,7 @@ void robo_inicializa(robo_t *self, unsigned int id,
     self->id = id;
     self->equipamento_esquerda = equipamento_esquerda;
     self->tipo_equipamento_esquerda = tipo_equipamento_esquerda;
-    self->equipamento_direita = equipamento_esquerda;
+    self->equipamento_direita = equipamento_direita;
     self->tipo_equipamento_direita = tipo_equipamento_direita;
 
     if (pthread_create(&self->thread, NULL, robo_executa, (void *) self) == 0) {
